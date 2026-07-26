@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+/* Brand palette — single source of truth. Swap values here to re-theme the whole site.
+   A warm, calm, human palette: cream paper, soft warm ink, sage as the quiet
+   everyday accent (links, icons, borders), terracotta ("clay") reserved for
+   the handful of moments that ask someone to act. Nothing glows, nothing
+   shimmers, nothing animates for its own sake — the previous neon/gradient
+   system is gone entirely. `gold-*` is kept as the historical token name for
+   the sage scale so every existing gold-* utility class across the app still
+   resolves without touching 20+ files. */
+@theme {
+  --color-paper: #faf5ec;
+  --color-paper-soft: #f1e8d8;
+  --color-smoke: #e6d9c3;
+
+  --color-ink: #2e2822;
+  --color-ink-soft: #4a3f35;
+
+  /* gold-* = sage green, the everyday accent (links, icons, borders, kickers) */
+  --color-gold-50: #f0f2e8;
+  --color-gold-200: #d2dab8;
+  --color-gold-300: #b4c293;
+  --color-gold-400: #97a874;
+  --color-gold-500: #7c8f5c;
+  --color-gold-600: #647249;
+  --color-gold-700: #4c5738;
+  --color-gold-900: #262c1c;
+
+  /* clay-* = warm terracotta, reserved for primary calls to action */
+  --color-clay-400: #c9835a;
+  --color-clay-500: #b5652f;
+  --color-clay-600: #954f22;
+  --color-clay-700: #703b1a;
+
+  --color-fog: #8a7d6b;
+  --color-fog-100: #524539;
+
+  --font-heading: "Fraunces", "Lora", Georgia, serif;
+  --font-body: "Karla", "Urbanist", system-ui, sans-serif;
+
+  --animate-grain: grain 10s steps(10) infinite;
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+    /* Lenis drives smooth scrolling; native smooth-scroll would fight it. */
+    scroll-behavior: auto;
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-paper);
+    color: var(--color-fog-100);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    color: var(--color-ink);
+    letter-spacing: -0.01em;
+  }
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-2%, -6%); }
+  20% { transform: translate(-8%, 2%); }
+  30% { transform: translate(4%, -2%); }
+  40% { transform: translate(-2%, 6%); }
+  50% { transform: translate(-8%, 3%); }
+  60% { transform: translate(6%, 0%); }
+  70% { transform: translate(0%, 4%); }
+  80% { transform: translate(3%, -6%); }
+  90% { transform: translate(-4%, 2%); }
+}
+
+/* Reusable utility classes */
+@layer components {
+  /* A calm paper card — soft warm surface, a hairline border, a gentle lift
+     on hover. No blur, no glass, no gradient ring. */
+  .glass-card {
+    background: var(--color-paper);
+    border: 1px solid rgba(46, 40, 34, 0.08);
+    box-shadow: 0 1px 2px rgba(46, 40, 34, 0.04), 0 10px 30px -12px rgba(46, 40, 34, 0.12);
+  }
+
+  .glass-card-hover {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .glass-card-hover:hover {
+    border-color: rgba(124, 143, 92, 0.4);
+    box-shadow: 0 1px 2px rgba(46, 40, 34, 0.04), 0 16px 36px -14px rgba(46, 40, 34, 0.18);
+    transform: translateY(-2px);
+  }
+
+  /* Plain solid accent color for the highlighted phrase in a heading — warm
+     terracotta against the warm-black line above it, no gradient, no motion. */
+  .accent-text {
+    color: var(--color-clay-600);
+  }
+
+  .nowrap-tab {
+    white-space: nowrap;
+  }
+
+  .eyebrow {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+
+  .step-number {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Filmic grain overlay — fixed, above everything, never intercepts clicks.
+     Kept from the previous design: it reads as paper texture here, not tech
+     polish, and costs nothing to keep. */
+  .grain-overlay {
+    position: fixed;
+    inset: -50%;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0.02;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 220px 220px;
+    animation: var(--animate-grain);
+  }
+}
