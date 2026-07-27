@@ -22,11 +22,39 @@ const initialState: LeadPayload = {
   message: "",
 };
 
+function splitName(fullName: string): { firstName: string; lastName: string } {
+  const trimmed = fullName.trim();
+  const spaceIndex = trimmed.indexOf(" ");
+  if (spaceIndex === -1) return { firstName: trimmed, lastName: "" };
+  return {
+    firstName: trimmed.slice(0, spaceIndex),
+    lastName: trimmed.slice(spaceIndex + 1).trim(),
+  };
+}
+
 async function submitLead(payload: LeadPayload): Promise<void> {
+  const { firstName, lastName } = splitName(payload.name);
+
+  // Flat, top-level fields (not nested) so each one shows up as its own
+  // token in GoHighLevel's webhook field mapper.
+  const ghlPayload = {
+    firstName,
+    lastName,
+    fullName: payload.name,
+    email: payload.email,
+    phone: payload.phone,
+    address: payload.address,
+    situation: payload.situation,
+    message: payload.message,
+    source: "Ragnar Real Estate Website",
+    page: typeof window !== "undefined" ? window.location.href : "",
+    submittedAt: new Date().toISOString(),
+  };
+
   const response = await fetch(LEAD_WEBHOOK_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
+    body: JSON.stringify(ghlPayload),
   });
   if (!response.ok) {
     throw new Error(`Webhook responded with ${response.status}`);

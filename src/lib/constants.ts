@@ -5,7 +5,7 @@ export const PHONE_TEL = "tel:+18609993824";
 export const PHONE_SMS = "sms:+18609993824";
 export const EMAIL = "tyler@ragnar.realestate";
 export const SERVICE_AREA = "Connecticut";
-export const LEAD_WEBHOOK_URL = "https://n8n.srv816605.hstgr.cloud/webhook/b40ea050-2ce9-473a-8a0f-5624998eb56c";
+export const LEAD_WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/5HhXvMiauehFEJ5BvaXR/webhook-trigger/72b06ceb-a316-4e57-a895-5be27868c2ea";
 
 export interface NavLink {
   label: string;
