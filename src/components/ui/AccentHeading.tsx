@@ -30,7 +30,7 @@ export default function AccentHeading({
   return (
     <div className={`text-center ${className}`}>
       <div className={`relative inline-block px-4 ${sizes[size]}`}>
-        <Tag className={`${sizes[size]} leading-[1.1]`}>
+        <Tag className={`${sizes[size]} leading-[1.3]`}>
           <RevealText className="text-ink">{line}</RevealText>
           <RevealText delay={0.08} className="accent-text mt-1 sm:mt-2">
             {accent}

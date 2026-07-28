@@ -1,24 +1,14 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import AccentHeading from "../components/ui/AccentHeading";
-import RagnarMark from "../components/ui/RagnarMark";
 import HowWeHelp from "../components/sections/HowWeHelp";
 import PathSelector from "../components/sections/PathSelector";
 
 export default function Home() {
   return (
     <>
-      <section className="relative mx-auto flex min-h-[92vh] max-w-5xl flex-col items-center justify-center px-4 pb-[205px] text-center sm:px-6">
+      <section className="relative mx-auto flex min-h-[92vh] max-w-5xl flex-col items-center justify-center px-4 pb-[190px] text-center sm:px-6">
         <div>
-          <motion.div
-            initial={{ opacity: 0, y: -12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="mb-8 flex justify-center"
-          >
-            <RagnarMark className="h-[280px] sm:h-[320px]" />
-          </motion.div>
-
           <AccentHeading
             as="h1"
             size="lg"

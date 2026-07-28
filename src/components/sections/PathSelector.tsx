@@ -26,7 +26,7 @@ const paths = [
 
 export default function PathSelector() {
   return (
-    <section id="get-started" className="mx-auto max-w-6xl px-4 pb-24 sm:px-6 lg:px-8 scroll-mt-24">
+    <section id="get-started" className="mx-auto max-w-6xl px-4 pb-[81px] sm:px-6 lg:px-8 scroll-mt-24">
       <span className="eyebrow mb-3 block text-center text-gold-600">Get Started</span>
       <AccentHeading
         as="h2"
