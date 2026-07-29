@@ -1,5 +1,6 @@
 import AccentHeading from "../components/ui/AccentHeading";
-import TestimonialSpotlights from "../components/sections/TestimonialSpotlights";
+import TestimonialVideos from "../components/sections/TestimonialVideos";
+import TestimonialEmbeds from "../components/sections/TestimonialEmbeds";
 import CalloutBand from "../components/sections/CalloutBand";
 import ContactSection from "../components/sections/ContactSection";
 
@@ -16,7 +17,8 @@ export default function Testimonials() {
         />
       </section>
 
-      <TestimonialSpotlights />
+      <TestimonialVideos />
+      <TestimonialEmbeds />
 
       <CalloutBand
         line="Maybe Your Story"
