@@ -36,8 +36,16 @@ export default function Footer() {
           </nav>
         </div>
 
-        <div className="mt-10 border-t border-ink/5 pt-6 text-center text-xs text-fog">
-          © {new Date().getFullYear()} Ragnar Real Estate. All rights reserved.
+        <div className="mt-10 flex flex-col items-center gap-3 border-t border-ink/5 pt-6 text-center text-xs text-fog sm:flex-row sm:justify-between">
+          <p>© {new Date().getFullYear()} Ragnar Real Estate. All rights reserved.</p>
+          <nav className="flex items-center gap-4" aria-label="Legal">
+            <Link to="/privacy-policy" className="hover:text-ink transition-colors">
+              Privacy Policy
+            </Link>
+            <Link to="/terms-and-conditions" className="hover:text-ink transition-colors">
+              Terms &amp; Conditions
+            </Link>
+          </nav>
         </div>
       </div>
     </footer>

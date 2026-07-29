@@ -12,10 +12,11 @@ interface CTAButtonProps {
   className?: string;
   onClick?: () => void;
   type?: "button" | "submit";
+  disabled?: boolean;
 }
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-heading font-semibold text-sm tracking-wide transition-all duration-300 whitespace-nowrap";
+  "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-heading font-semibold text-sm tracking-wide transition-all duration-300 whitespace-nowrap disabled:opacity-45 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:shadow-none";
 
 const variants = {
   primary:
@@ -32,6 +33,7 @@ export default function CTAButton({
   className = "",
   onClick,
   type = "button",
+  disabled = false,
 }: CTAButtonProps) {
   const classes = `${base} ${variants[variant]} ${className}`;
   const magneticRef = useMagnetic<HTMLElement>();
@@ -53,7 +55,13 @@ export default function CTAButton({
   }
 
   return (
-    <button ref={magneticRef as React.Ref<HTMLButtonElement>} type={type} className={classes} onClick={onClick}>
+    <button
+      ref={magneticRef as React.Ref<HTMLButtonElement>}
+      type={type}
+      className={classes}
+      onClick={onClick}
+      disabled={disabled}
+    >
       {children}
     </button>
   );

@@ -9,6 +9,8 @@ import PreProbate from "./pages/PreProbate";
 import Inherited from "./pages/Inherited";
 import FairOffer from "./pages/FairOffer";
 import Testimonials from "./pages/Testimonials";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsAndConditions from "./pages/TermsAndConditions";
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
         <Route path="/inherited" element={<Inherited />} />
         <Route path="/fair-offer" element={<FairOffer />} />
         <Route path="/testimonials" element={<Testimonials />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
       </Route>
     </Routes>
   );

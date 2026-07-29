@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { CheckCircle2, Phone } from "lucide-react";
 import { SITUATION_OPTIONS, PHONE_DISPLAY, PHONE_TEL, LEAD_WEBHOOK_URL } from "../../lib/constants";
 import CTAButton from "../ui/CTAButton";
@@ -11,6 +12,7 @@ interface LeadPayload {
   address: string;
   situation: string;
   message: string;
+  smsConsent: boolean;
 }
 
 const initialState: LeadPayload = {
@@ -20,6 +22,7 @@ const initialState: LeadPayload = {
   address: "",
   situation: SITUATION_OPTIONS[0],
   message: "",
+  smsConsent: false,
 };
 
 function splitName(fullName: string): { firstName: string; lastName: string } {
@@ -46,6 +49,8 @@ async function submitLead(payload: LeadPayload): Promise<void> {
     address: payload.address,
     situation: payload.situation,
     message: payload.message,
+    smsConsent: payload.smsConsent,
+    consentTimestamp: new Date().toISOString(),
     source: "Ragnar Real Estate Website",
     page: typeof window !== "undefined" ? window.location.href : "",
     submittedAt: new Date().toISOString(),
@@ -71,6 +76,7 @@ export default function ContactForm({ defaultSituation }: ContactFormProps) {
     situation: defaultSituation ?? initialState.situation,
   });
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [consentTouched, setConsentTouched] = useState(false);
 
   function update<K extends keyof LeadPayload>(key: K, value: LeadPayload[K]) {
     setValues((prev) => ({ ...prev, [key]: value }));
@@ -78,6 +84,10 @@ export default function ContactForm({ defaultSituation }: ContactFormProps) {
 
   async function handleSubmit() {
     if (!values.name || !values.phone) return;
+    if (!values.smsConsent) {
+      setConsentTouched(true);
+      return;
+    }
     setStatus("submitting");
     try {
       await submitLead(values);
@@ -170,9 +180,41 @@ export default function ContactForm({ defaultSituation }: ContactFormProps) {
         </div>
       </div>
 
-      <div className="mt-7 flex flex-col items-center gap-4 text-center">
+      <div className="mt-6">
+        <label className="flex items-start gap-3 text-left">
+          <input
+            type="checkbox"
+            checked={values.smsConsent}
+            onChange={(e) => {
+              update("smsConsent", e.target.checked);
+              if (e.target.checked) setConsentTouched(false);
+            }}
+            className="mt-1 h-4 w-4 shrink-0 rounded border-ink/25 text-gold-600 focus:ring-1 focus:ring-gold-400"
+          />
+          <span className="text-xs leading-relaxed text-fog-100">
+            By checking this box, I agree to receive calls and text messages, including by automated means, from
+            Ragnar Real Estate at the phone number provided, regarding my inquiry. Message and data rates may apply.
+            Message frequency varies. Reply STOP to opt out at any time, or HELP for help. Consent is not a
+            condition of any purchase. See our{" "}
+            <Link to="/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-gold-600 underline hover:text-gold-700">
+              Privacy Policy
+            </Link>{" "}
+            and{" "}
+            <Link to="/terms-and-conditions" target="_blank" rel="noopener noreferrer" className="text-gold-600 underline hover:text-gold-700">
+              Terms &amp; Conditions
+            </Link>
+            .
+          </span>
+        </label>
+        {consentTouched && !values.smsConsent && (
+          <p className="mt-2 text-xs font-medium text-red-500">Please check the box above so we're able to contact you back.</p>
+        )}
+      </div>
+
+      <div className="mt-6 flex flex-col items-center gap-4 text-center">
         <CTAButton
           onClick={handleSubmit}
+          disabled={!values.name || !values.phone || !values.smsConsent}
           className="w-full sm:w-auto"
         >
           {status === "submitting" ? "Sending..." : "Get My Free Consultation"}
