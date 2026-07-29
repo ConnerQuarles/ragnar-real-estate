@@ -15,6 +15,7 @@ export interface NavLink {
 export const NAV_PRIMARY: NavLink[] = [
   { label: "Home", path: "/" },
   { label: "How We Help", path: "/#how-we-help" },
+  { label: "Testimonials", path: "/testimonials" },
 ];
 
 export const NAV_FORECLOSURE_GROUP: NavLink[] = [
@@ -38,6 +39,7 @@ export const FOOTER_LINKS: NavLink[] = [
   { label: "Pre-Probate", path: "/pre-probate" },
   { label: "Inherited", path: "/inherited" },
   { label: "Sell My Home", path: "/fair-offer" },
+  { label: "Testimonials", path: "/testimonials" },
 ];
 
 export const SITUATION_OPTIONS = [

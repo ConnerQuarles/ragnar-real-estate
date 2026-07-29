@@ -1,12 +1,10 @@
 import TwoPathFramework from "../components/sections/TwoPathFramework";
 import ProcessSteps from "../components/sections/ProcessSteps";
 import WhyUsComparison from "../components/sections/WhyUsComparison";
-import CaseStudyCards from "../components/sections/CaseStudyCards";
 import CalloutBand from "../components/sections/CalloutBand";
 import ContactSection from "../components/sections/ContactSection";
 import AccentHeading from "../components/ui/AccentHeading";
 import { PROCESS_STEPS } from "../data/process";
-import { FORECLOSURE_CASE_STUDIES } from "../data/caseStudies";
 
 export default function Foreclosure() {
   return (
@@ -24,11 +22,6 @@ export default function Foreclosure() {
       <TwoPathFramework />
       <ProcessSteps steps={PROCESS_STEPS} />
       <WhyUsComparison />
-      <CaseStudyCards
-        studies={FORECLOSURE_CASE_STUDIES}
-        headingLine="Real Stories,"
-        headingAccent="Real Foreclosures Prevented"
-      />
       <CalloutBand
         line="You Still Have Time —"
         accent="Act Now."
