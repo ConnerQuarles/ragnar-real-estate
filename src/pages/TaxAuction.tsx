@@ -1,7 +1,6 @@
 import AccentHeading from "../components/ui/AccentHeading";
 import ProcessSteps from "../components/sections/ProcessSteps";
 import WhyUsComparison from "../components/sections/WhyUsComparison";
-import PlaceholderStories from "../components/sections/PlaceholderStories";
 import ContactSection from "../components/sections/ContactSection";
 import { PROCESS_STEPS } from "../data/process";
 
@@ -20,11 +19,6 @@ export default function TaxAuction() {
 
       <ProcessSteps steps={PROCESS_STEPS} />
       <WhyUsComparison />
-      <PlaceholderStories
-        headingLine="Real Stories,"
-        headingAccent="Real Tax Auctions Stopped"
-        label="Tax Auction"
-      />
 
       <ContactSection
         line="Let's Talk Through"

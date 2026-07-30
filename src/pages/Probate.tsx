@@ -2,7 +2,6 @@ import AccentHeading from "../components/ui/AccentHeading";
 import ProbateSteps from "../components/sections/ProbateSteps";
 import ProcessSteps from "../components/sections/ProcessSteps";
 import WhyUsComparison from "../components/sections/WhyUsComparison";
-import PlaceholderStories from "../components/sections/PlaceholderStories";
 import ContactSection from "../components/sections/ContactSection";
 import { CallOrTextButton } from "../components/ui/CTAButton";
 import { PROCESS_STEPS } from "../data/process";
@@ -23,11 +22,6 @@ export default function Probate() {
       <ProbateSteps />
       <ProcessSteps steps={PROCESS_STEPS} />
       <WhyUsComparison />
-      <PlaceholderStories
-        headingLine="Real Stories,"
-        headingAccent="Real Families"
-        label="Probate"
-      />
 
       <section className="mx-auto max-w-3xl px-4 pb-8 text-center sm:px-6 lg:px-8">
         <h2 className="font-heading text-2xl font-semibold text-ink sm:text-3xl">
