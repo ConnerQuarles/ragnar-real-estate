@@ -50,12 +50,24 @@ export default function PrivacyPolicy() {
 
       <Section title="3. Text Messaging and Call Communications">
         <p>
-          If you provide your phone number and consent to be contacted, you agree that {COMPANY_NAME} may call or
-          text you, including using automated technology, about your inquiry and related services. Message
-          frequency varies. Message and data rates may apply. You may opt out of text messages at any time by
-          replying <strong className="text-ink">STOP</strong>, or request help by replying{" "}
-          <strong className="text-ink">HELP</strong>. Consent to receive texts or calls is not a condition of any
-          purchase.
+          If you provide your phone number, you may separately opt in to two categories of text messages, each with
+          its own consent:
+        </p>
+        <ul className="list-disc space-y-2 pl-6">
+          <li>
+            <strong className="text-ink">Marketing messages</strong> — about special offers, discounts, and service
+            updates from {COMPANY_NAME}; and
+          </li>
+          <li>
+            <strong className="text-ink">Non-marketing (transactional) messages</strong> — such as appointment
+            reminders, confirmations, and account notifications related to your inquiry.
+          </li>
+        </ul>
+        <p>
+          Opting into one category does not opt you into the other. For either category, message frequency may
+          vary, message and data rates may apply, and consent is not a condition of any purchase. You may opt out of
+          text messages at any time by replying <strong className="text-ink">STOP</strong>, or request help by
+          texting <strong className="text-ink">HELP</strong>.
         </p>
         <p>
           No mobile information will be shared with third parties or affiliates for marketing or promotional

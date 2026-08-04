@@ -51,11 +51,12 @@ export default function TermsAndConditions() {
 
       <Section title="4. Communications Consent">
         <p>
-          If you provide your phone number and check the applicable consent box, you agree that we may contact you
-          by phone call or text message, including using automated technology, about your inquiry. Message and data
-          rates may apply, and message frequency varies. You may opt out of texts at any time by replying{" "}
-          <strong className="text-ink">STOP</strong>. This consent is not required to use the Site generally and is
-          not a condition of any purchase. See our{" "}
+          Our contact form offers separate, optional checkboxes for marketing text messages and non-marketing
+          (transactional) text messages. If you check either box, you agree that we may contact you by text message,
+          including using automated technology, for that category of message. Checking one box does not opt you
+          into the other. Message and data rates may apply, and message frequency varies. You may opt out of texts
+          at any time by replying <strong className="text-ink">STOP</strong>. Neither checkbox is required to submit
+          the form or use the Site, and consent is not a condition of any purchase. See our{" "}
           <Link to="/privacy-policy" className="text-gold-600 underline hover:text-gold-700">
             Privacy Policy
           </Link>{" "}
